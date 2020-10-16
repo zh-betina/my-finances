@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Header from './Header/Header';
 import Sidebar from './Sidebar/Sidebar';
@@ -8,13 +9,15 @@ import Main from './Main/Main';
 class App extends Component{
   render(){
     return (
-      <div className="App">
-        <Header />
+      <BrowserRouter>
+        <div className="App">
+          <Header />
         <div className="row">
           <Sidebar />
           <Main />
         </div>
-      </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }

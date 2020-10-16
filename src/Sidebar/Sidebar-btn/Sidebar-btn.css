@@ -1,0 +1,18 @@
+.App-navbar {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f9fa;
+    width: 17vw;
+    height: 100vh;
+    padding: 1.8rem 2rem;
+  }
+
+.Sidebar-btn:hover{
+    border: solid 1px grey;
+}
+
+.Sidebar-btn-link{
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    color: #293845;
+  }

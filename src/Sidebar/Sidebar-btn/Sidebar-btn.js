@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import './Sidebar-btn.css';
 
 const btn = (props) =>{
     
     return (
         <div className="Sidebar-btn">
             <span>{props.children}</span>
-            <a href="#" className="Sidebar-btn-link">{props.txt}</a>
+            <a href={props.href} className="Sidebar-btn-link">{props.txt}</a>
         </div>
     )
 }

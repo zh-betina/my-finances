@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
+import './Main.css';
+import { Route } from 'react-router-dom';
+import Default from './Views/Default/Default';
+import Expenses from './Views/Expenses/Expenses';
+import Income from './Views/Income/Income';
+import Settings from './Views/Settings/Settings';
 
 class Main extends Component {
-    state = {
-        view: null
-    }
-
-    changeHeading = (event)=> {
-        return console.log("Blabla");
-    }
-
     render(){
         return (
-            <section className="Main-views">
-                <h2 click={this.changeHeading}>Heading</h2>
-            </section>
+            <main className="Main-views">
+                <Route path="/" exact component={Default} />
+                <Route path="/expenses" exact component={Expenses} />
+                <Route path="/income" exact component={Income} />
+                <Route path="/settings" exact component={Settings} />
+            </main>
         )
     }
 }
