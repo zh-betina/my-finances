@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Settings extends Component {
-    render() {
-        return (
-            <section className="Settings">
-                <h2 className="Settings-heading">Settings</h2>
-            </section>
-        )
-    }
+const settings = () => {
+    return (
+        <section className="Settings">
+            <h2 className="Settings-heading">Settings</h2>
+        </section>
+    )
 }
 
-export default Settings;
+export default settings;
