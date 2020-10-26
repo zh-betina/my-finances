@@ -16,3 +16,13 @@
     text-transform: capitalize;
     color: #293845;
   }
+
+.Btn-icon{
+    padding: .4rem .8rem .2rem .8rem;
+    display: inline-block;
+    height: 2rem;
+    width: auto;
+    fill: #4b5c6b;
+    position: relative;
+    top: .6rem;
+}

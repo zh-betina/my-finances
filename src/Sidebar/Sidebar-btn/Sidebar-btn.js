@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './Sidebar-btn.css';
 
-const btn = (props) =>{
-    
+const btn = (props) => {
+
     return (
         <div className="Sidebar-btn">
             <span>{props.children}</span>
-            <a href={props.href} className="Sidebar-btn-link">{props.txt}</a>
+            <Link to={props.href} className="Sidebar-btn-link">{props.txt}</Link>
         </div>
     )
 }

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+
 import './Expenses.css';
 
-class Expenses extends Component{
-    render(){      
-        return(
+class Expenses extends Component {
+    render() {
+        return (
             <section className="Expenses">
                 <h2 className="Expenses-heading">Expenses</h2>
                 <div className="Expenses-textfield">
