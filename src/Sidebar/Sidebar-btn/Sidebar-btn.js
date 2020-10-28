@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './Sidebar-btn.css';
 
-const btn = (props) => {
+const Btn = (props) => {
 
     return (
         <div className="Sidebar-btn">
@@ -14,4 +14,4 @@ const btn = (props) => {
 }
 
 
-export default btn;
+export default Btn;

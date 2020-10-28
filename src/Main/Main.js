@@ -1,4 +1,3 @@
-//import React, { Component } from 'react';
 import React from 'react';
 import { Route } from 'react-router-dom';
 
@@ -9,7 +8,7 @@ import Settings from './Views/Settings/Settings';
 
 import './Main.css';
 
-const main = () => {
+const Main = () => {
 
     return (
         <main className="Main-views">
@@ -21,4 +20,4 @@ const main = () => {
     )
 }
 
-export default main;
+export default Main;
