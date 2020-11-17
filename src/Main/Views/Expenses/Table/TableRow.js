@@ -2,15 +2,15 @@ import React from "react";
 
 import "./TableRow.css";
 
-const TableRow = props => {
+const TableRow = data => {
     return(
         <tr className = "Table-row" >
-            <td>{props.date}</td>
-            <td>{props.payee}</td>
-            <td>{props.category}</td>
-            <td>{props.memo}</td>
-            <td>{props.outflow}</td>
-            <td>{props.inflow}</td>
+            <td>{data.date}</td>
+            <td>{data.payee}</td>
+            <td>{data.category}</td>
+            <td>{data.memo}</td>
+            <td>{data.outflow}</td>
+            <td>{data.inflow}</td>
         </tr >
     )
 }

@@ -23,24 +23,12 @@ const Table = () => {
                     <td>Outflow</td>
                     <td>Inflow</td>
                 </tr>
-                <TableRow date={data[0].date}
-                    payee={data[0].payee}
-                    category={data[0].category}
-                    memo={data[0].memo}
-                    outflow={data[0].outflow}
-                    inflow={data[0].inflow} />
-                <TableRow date={data[1].date}
-                    payee={data[1].payee}
-                    category={data[1].category}
-                    memo={data[1].memo}
-                    outflow={data[1].outflow}
-                    inflow={data[1].inflow} />
-                <TableRow date={data[2].date}
-                    payee={data[2].payee}
-                    category={data[2].category}
-                    memo={data[2].memo}
-                    outflow={data[2].outflow}
-                    inflow={data[2].inflow} />
+                {
+                    data.map((item, index) => {
+                        return <TableRow {...item} key={index} />;
+                    })          
+                }
+
             </tbody>
         </table>
     )
