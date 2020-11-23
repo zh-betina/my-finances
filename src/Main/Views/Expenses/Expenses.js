@@ -9,14 +9,13 @@ import './Expenses.css';
 
 const Expenses = () => {
 
-    let newData;
     expensesData.forEach(entry => {
         return entry.date = entry.date.slice(0, 10);
     });
 
     const [data, setData] = useState(expensesData);
 
-    const addEntries = newData => {
+    const addEntries = () => {
         const inputs = document.querySelectorAll(".Input");
         const newObjKeys = ["date", "payee", "category", "memo", "outflow", "inflow"];
         let inputsVal = [];
@@ -28,13 +27,8 @@ const Expenses = () => {
         newObjKeys.forEach((key, i) => {
             newObj[key] = inputsVal[i];
         });
-
         if (newObj !== undefined) {
             data.push(newObj);
-            newData = data;
-        } else {
-            /*Here some info for user he hasn't filled in the form*/
-            newData = data;
         }
         setData(receivedData => [...receivedData]);
     }
