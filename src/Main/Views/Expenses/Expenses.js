@@ -16,6 +16,29 @@ const Expenses = () => {
 
     const [data, setData] = useState(expensesData);
 
+    const addEntries = newData => {
+        const inputs = document.querySelectorAll(".Input");
+        const newObjKeys = ["date", "payee", "category", "memo", "outflow", "inflow"];
+        let inputsVal = [];
+        let newObj = {};
+
+        inputs.forEach(item => {
+            inputsVal.push(item.value)
+        });
+        newObjKeys.forEach((key, i) => {
+            newObj[key] = inputsVal[i];
+        });
+
+        if (newObj !== undefined) {
+            data.push(newObj);
+            newData = data;
+        } else {
+            /*Here some info for user he hasn't filled in the form*/
+            newData = data;
+        }
+        setData(receivedData => [...receivedData]);
+    }
+
     return (
         <section className="Expenses">
             <h2 className="Expenses-heading">Expenses</h2>
@@ -28,32 +51,9 @@ const Expenses = () => {
 
                 }
             </div>
-            <button onClick={(newData) => {
-                const inputs = document.querySelectorAll(".Input");
-                const newObjKeys = ["date", "payee", "category", "memo", "outflow", "inflow"];
-                let inputsVal = [];
-                let newObj = {};
-
-                inputs.forEach(item => {
-                    inputsVal.push(item.value)
-                });
-                newObjKeys.forEach((key, i) => {
-                    newObj[key] = inputsVal[i];
-                });
-
-                if (newObj !== undefined) {
-                    console.log(data);
-                    data.push(newObj);
-                    newData = data;
-                    return setData(newData);
-                } else {
-                    /*Here some info for user he hasn't filled in the form*/
-                    newData = data;
-                    return setData(newData);
-                }
-            }}>Add</button>
+            <button onClick={() => { addEntries() }}>Add</button>
             <h3 className="Expenses-table-heading">List of expenses</h3>
-            <Table data={newData ? undefined : data}/>
+            <Table data={data} />
         </section>
     )
 }
