@@ -4,10 +4,10 @@ import { AiOutlineCreditCard } from "react-icons/ai";
 
 import './DefaultView.css';
 
-const defaultView = () => {
+const DefaultView = () => {
     return (
         <AiOutlineCreditCard className="Default-icon" />
     )
 }
 
-export default defaultView;
+export default DefaultView;

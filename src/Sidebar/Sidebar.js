@@ -8,7 +8,7 @@ import { MdSettings } from 'react-icons/md';
 import './Sidebar.css';
 
 
-const sidebar = () => {
+const Sidebar = () => {
 
     return (
         <nav className="Sidebar">
@@ -19,5 +19,5 @@ const sidebar = () => {
     );
 }
 
-export default sidebar;
+export default Sidebar;
 

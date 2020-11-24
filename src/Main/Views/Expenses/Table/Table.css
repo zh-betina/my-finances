@@ -1,0 +1,16 @@
+.Table{
+    border: solid 2px #cad4dd;
+    width: 70vw;
+    border-collapse: collapse;
+    text-align: center;
+}
+.Table-column-title td{
+    border: solid 2px #cad4dd;
+    width: 6rem;
+    height: 3rem;
+    font-size: 1.3rem;
+}
+
+.Table-column-title td{
+    font-weight: bold;
+}
