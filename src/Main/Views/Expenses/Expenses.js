@@ -27,10 +27,8 @@ const Expenses = () => {
         newObjKeys.forEach((key, i) => {
             newObj[key] = inputsVal[i];
         });
-        if (newObj !== undefined) {
-            data.push(newObj);
-        }
-        setData(receivedData => [...receivedData]);
+
+        setData(receivedData => [...receivedData, newObj]);
     }
 
     return (

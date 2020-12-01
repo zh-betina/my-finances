@@ -6,7 +6,7 @@ const InputRow = inputOptions => {
     return (
         <div className="Input-row">
             <label className="Input-row-label"
-                for={inputOptions.name}>{inputOptions.name}
+                htmlFor={inputOptions.name}>{inputOptions.name}
             </label>
             <input className="Input"
                 type={inputOptions.type}
