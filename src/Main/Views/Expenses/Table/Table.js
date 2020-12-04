@@ -1,17 +1,11 @@
 import React from "react";
 
-import { expensesData } from "../data/expensesData.js";
 import TableRow from "./TableRow";
 
 import "./Table.css";
 
-const Table = () => {
-
-    const data = expensesData;
-    data.forEach(entry => {
-        return entry.date = entry.date.slice(0, 10);
-    });
-
+const Table = (props) => {
+    let data = props.data;
     return (
         <table className="Table">
             <tbody>

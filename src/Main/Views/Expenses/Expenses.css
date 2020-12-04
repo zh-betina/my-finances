@@ -3,20 +3,7 @@
     margin: 2rem 1rem;
 }
 
-.Expenses-textfield{
-    border: solid 2px #cad4dd;
-    display: flex;
-    flex-direction: column;
-}
-
-.Expenses-textfield textarea{
-    border-style: none;
-    resize: none;
-    padding: 1rem;
-    width: 65vw;
-}
-
-.Expenses-textfield button{
+.Expenses button{
     cursor: pointer;
     align-self: end;
     margin: 1rem;
@@ -26,6 +13,18 @@
     color: white;
     border-radius: .5rem;
     border-style: none;
+}
+
+.Expenses-input-box{
+    border: solid 2px #cad4dd;
+    padding: 2rem;
+    display: flex;
+    max-width: 40vw;
+    min-height: 10rem;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-around;
+    flex-wrap: wrap;
 }
 
 .Expenses-table-heading{
