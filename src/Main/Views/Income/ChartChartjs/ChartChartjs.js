@@ -82,8 +82,8 @@ const ChartChartjs = () => {
         })
     });
     return (
-        <div class="chartChartjs-wrapper">
-            <canvas class="chartChartjs" id="chart1" width="800" height="500">
+        <div className="chartChartjs-wrapper">
+            <canvas className="chartChartjs" id="chart1" width="800" height="500">
             </canvas>
         </div>
     )
