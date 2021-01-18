@@ -84,32 +84,32 @@ const chartData = {
         "25": 36194.0712018588
     },
     FraisAchat: {
-        "0": -27100,
-        "1": -27100,
-        "2": -27100,
-        "3": -27100,
-        "4": -27100,
-        "5": -27100,
-        "6": -27100,
-        "7": -27100,
-        "8": -27100,
-        "9": -27100,
-        "10": -27100,
-        "11": -27100,
-        "12": -27100,
-        "13": -27100,
-        "14": -27100,
-        "15": -27100,
-        "16": -27100,
-        "17": -27100,
-        "18": -27100,
-        "19": -27100,
-        "20": -27100,
-        "21": -27100,
-        "22": -27100,
-        "23": -27100,
-        "24": -27100,
-        "25": -27100
+        "0": -40000,
+        "1": -40000,
+        "2": -40000,
+        "3": -40000,
+        "4": -40000,
+        "5": -40000,
+        "6": -40000,
+        "7": -40000,
+        "8": -40000,
+        "9": -40000,
+        "10": -40000,
+        "11": -40000,
+        "12": -40000,
+        "13": -40000,
+        "14": -40000,
+        "15": -40000,
+        "16": -40000,
+        "17": -40000,
+        "18": -40000,
+        "19": -40000,
+        "20": -40000,
+        "21": -40000,
+        "22": -40000,
+        "23": -40000,
+        "24": -40000,
+        "25": -40000
     },
     Loyer: {
         "0": 0,
@@ -253,4 +253,27 @@ const chartData = {
     }
 }
 
-export default chartData;
+const toStructuredArray = (chartData, structuredArray) => {
+    const names = Object.keys(chartData);
+    const finalLength = 26;
+
+    for (let i = 0; i <= finalLength - 1; i++) {
+        let newObj = {
+            "name": i
+        }
+        names.forEach(el => {
+            newObj[el] = chartData[el][i]
+        });
+
+        structuredArray.push(newObj);
+    }
+    structuredArray.columns = ["name", ...names];
+    console.log(structuredArray);
+    return structuredArray;
+}
+
+
+
+
+export { chartData, toStructuredArray };
+
