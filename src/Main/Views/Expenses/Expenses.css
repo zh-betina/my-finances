@@ -1,0 +1,38 @@
+.Expenses{
+    width: 70vw;
+    margin: 2rem 1rem;
+}
+
+.Expenses-textfield{
+    border: solid 2px #cad4dd;
+    display: flex;
+    flex-direction: column;
+}
+
+.Expenses-textfield textarea{
+    border-style: none;
+    resize: none;
+    padding: 1rem;
+    width: 65vw;
+}
+
+.Expenses-textfield button{
+    cursor: pointer;
+    align-self: end;
+    margin: 1rem;
+    width: 8rem;
+    height: 4rem;
+    background-color: #207868;
+    color: white;
+    border-radius: .5rem;
+    border-style: none;
+}
+
+.Expenses-table-heading{
+    font-weight: 300;
+    font-size: 1.2rem;
+    text-align: left;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+}
