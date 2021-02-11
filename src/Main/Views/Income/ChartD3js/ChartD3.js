@@ -20,20 +20,23 @@ const ChartD3 = () => {
         const width = 850;
         const height = 450;
         const padding = 40;
+
         const xScale = d3.scaleBand()
             .domain(labels)
             .range([padding, width - padding])
             .padding([0.1]);
-
         const xAxis = d3.axisBottom(xScale);
 
-        //const yScale = d3.
+        const yScale = d3.scaleLinear()
+            .domain([d3.min(data), d3.max(data)])
+            .range([height - padding, 0]);
+        const yAxis = d3.axisLeft(yScale);
 
-        const svg = d3.select("#ChartD3") //the principal svg
+        //the principal svg
+        const svg = d3.select("#ChartD3")
             .append("svg")
             .attr("height", height)
-            .attr("width", width)
-            .style("background-color", "pink");
+            .attr("width", width);
 
         //bars
         svg.selectAll("rect")
@@ -41,24 +44,30 @@ const ChartD3 = () => {
             .enter()
             .append("rect")
             .attr("x", (d, i) => xScale(labels[i]))
-            .attr("y", (d) => (height - padding) - (d * 0.0021) + "px")
-            .attr("height", (d, i) => d * 0.0021 + "px")
+            .attr("y", (d) => yScale(d))
+            .attr("height", (d, i) => (height - padding) - yScale(d))
             .attr("width", xScale.bandwidth())
             .attr("class", "bar")
             .append("title")
-            .text(d => "PlueValue: " + d + " euros");
+            .text(d => `PlueValue: ${d} euros`);
 
-        // title for bottom axis
+        // label for bottom axis
         svg.append("text")
             .attr("x", "50%")
             .attr("y", (d) => height - 2 + "px")
             .attr("class", "bottom-axis--txt")
-            .text("Nombre d'années");
+            .text(`Nombre d'années`);
 
         //bottom axis
         svg.append("g")
             .attr("transform", "translate(0," + (height - padding) + ")")
             .call(xAxis);
+
+        //vertical axis
+        svg.append("g")
+            .attr("transform", "translate(45,0)")
+            .call(yAxis);
+
     })
     return (
         <div className="ChartD3" id="ChartD3">
