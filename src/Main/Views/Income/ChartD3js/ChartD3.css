@@ -11,3 +11,9 @@
 .bar:hover{
     fill: #9a8194;
 }
+
+.bottom-axis--txt{
+    font-size: 1.4rem;
+    font-weight: 600;
+    fill: #5b5b5b;
+}

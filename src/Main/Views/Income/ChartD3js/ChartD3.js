@@ -16,11 +16,18 @@ const ChartD3 = () => {
     labels.fill(null);
     labels = labels.map((el, idx) => { return el = idx });
 
-    console.log(data);
-    console.log(labels);
     useEffect(() => {
         const width = 850;
         const height = 450;
+        const padding = 40;
+        const xScale = d3.scaleBand()
+            .domain(labels)
+            .range([padding, width - padding])
+            .padding([0.1]);
+
+        const xAxis = d3.axisBottom(xScale);
+
+        //const yScale = d3.
 
         const svg = d3.select("#ChartD3") //the principal svg
             .append("svg")
@@ -33,25 +40,25 @@ const ChartD3 = () => {
             .data(data)
             .enter()
             .append("rect")
-            .attr("x", (d, i) => i * 31 + "px")
-            .attr("y", (d) => (height - 20) - (d * 0.0021) + "px")
+            .attr("x", (d, i) => xScale(labels[i]))
+            .attr("y", (d) => (height - padding) - (d * 0.0021) + "px")
             .attr("height", (d, i) => d * 0.0021 + "px")
-            .attr("width", 30 + "px")
+            .attr("width", xScale.bandwidth())
             .attr("class", "bar")
             .append("title")
-            .text(d => d + " euros")
+            .text(d => "PlueValue: " + d + " euros");
 
-        // labels & tooltips
-        svg.selectAll("text")
-            .data(labels)
-            .enter()
-            .append("text")
-            .attr("x", (d, i) => i * 31.5 + "px")
+        // title for bottom axis
+        svg.append("text")
+            .attr("x", "50%")
             .attr("y", (d) => height - 2 + "px")
-            .style("font-size", "1.4rem")
-            .style("font-weight", "600")
-            .style("fill", "#5b5b5b")
-            .text(d => d);
+            .attr("class", "bottom-axis--txt")
+            .text("Nombre d'années");
+
+        //bottom axis
+        svg.append("g")
+            .attr("transform", "translate(0," + (height - padding) + ")")
+            .call(xAxis);
     })
     return (
         <div className="ChartD3" id="ChartD3">
