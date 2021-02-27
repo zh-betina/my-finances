@@ -17,7 +17,7 @@ const ChartD3 = () => {
     let labels = []
     labels.length = 26;
     labels.fill(null);
-    labels = labels.map((el, idx) => idx );
+    labels = labels.map((el, idx) => idx);
 
     useEffect(() => {
         const xScale = d3.scaleBand()
@@ -64,7 +64,7 @@ const ChartD3 = () => {
 
         //vertical axis
         svg.append("g")
-            .attr("transform", "translate(45,0)")
+            .attr("transform", `translate(${PADDING + 5},0)`)
             .call(yAxis);
 
     })
