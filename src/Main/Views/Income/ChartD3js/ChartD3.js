@@ -5,38 +5,37 @@ import chartData from "../data/chartData";
 
 import "./ChartD3.css";
 
+const WIDTH = 850;
+const HEIGHT = 450;
+const PADDING = 40;
 
 
 const ChartD3 = () => {
 
     let data = Object.values(Object.entries(chartData)[0][1]);
-    data = data.map(el => { return Math.round(el) });
+    data = data.map(el => Math.round(el));
     let labels = []
     labels.length = 26;
     labels.fill(null);
-    labels = labels.map((el, idx) => { return el = idx });
+    labels = labels.map((el, idx) => idx );
 
     useEffect(() => {
-        const width = 850;
-        const height = 450;
-        const padding = 40;
-
         const xScale = d3.scaleBand()
             .domain(labels)
-            .range([padding, width - padding])
+            .range([PADDING, WIDTH - PADDING])
             .padding([0.1]);
         const xAxis = d3.axisBottom(xScale);
 
         const yScale = d3.scaleLinear()
             .domain([d3.min(data), d3.max(data)])
-            .range([height - padding, 0]);
+            .range([HEIGHT - PADDING, 0]);
         const yAxis = d3.axisLeft(yScale);
 
         //the principal svg
         const svg = d3.select("#ChartD3")
             .append("svg")
-            .attr("height", height)
-            .attr("width", width);
+            .attr("height", HEIGHT)
+            .attr("width", WIDTH);
 
         //bars
         svg.selectAll("rect")
@@ -45,7 +44,7 @@ const ChartD3 = () => {
             .append("rect")
             .attr("x", (d, i) => xScale(labels[i]))
             .attr("y", (d) => yScale(d))
-            .attr("height", (d, i) => (height - padding) - yScale(d))
+            .attr("height", (d, i) => (HEIGHT - PADDING) - yScale(d))
             .attr("width", xScale.bandwidth())
             .attr("class", "bar")
             .append("title")
@@ -54,13 +53,13 @@ const ChartD3 = () => {
         // label for bottom axis
         svg.append("text")
             .attr("x", "50%")
-            .attr("y", (d) => height - 2 + "px")
+            .attr("y", (d) => `${HEIGHT - 2}px`)
             .attr("class", "bottom-axis--txt")
             .text(`Nombre d'années`);
 
         //bottom axis
         svg.append("g")
-            .attr("transform", "translate(0," + (height - padding) + ")")
+            .attr("transform", `translate(0, ${HEIGHT - PADDING})`)
             .call(xAxis);
 
         //vertical axis
