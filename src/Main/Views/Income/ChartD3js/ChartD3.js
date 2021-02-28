@@ -14,10 +14,37 @@ const ChartD3 = () => {
 
     let data = Object.values(Object.entries(chartData)[0][1]);
     data = data.map(el => Math.round(el));
+    let data2 = Object.values(Object.entries(chartData)[1][1]);
+    data2 = data2.map(el => Math.round(el));
+
+    let dataArr = [];
+
+    data.forEach(el=>{
+        dataArr.push({
+            "1": el
+        })
+    });
+
+    data2.forEach((el, i)=>{
+        dataArr[i]["2"] = el
+    })
+
+    console.log(dataArr);
+
     let labels = []
     labels.length = 26;
     labels.fill(null);
     labels = labels.map((el, idx) => idx);
+
+    console.log(data);
+    console.log(data2);
+
+    const minVal = d3.min(dataArr, d => d3.min(Object.values(d)));
+    console.log(minVal);
+    const maxVal = d3.max(dataArr, d => d3.max(Object.values(d)));
+    console.log(maxVal);
+
+
 
     useEffect(() => {
         const xScale = d3.scaleBand()
