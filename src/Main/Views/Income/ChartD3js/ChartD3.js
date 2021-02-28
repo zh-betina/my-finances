@@ -6,7 +6,7 @@ import chartData from "../data/chartData";
 import "./ChartD3.css";
 
 const WIDTH = 850;
-const HEIGHT = 450;
+const HEIGHT = 700;
 const PADDING = 40;
 
 
@@ -28,16 +28,12 @@ const ChartD3 = () => {
     data2.forEach((el, i)=>{
         dataArr[i]["2"] = el
     })
-
     console.log(dataArr);
 
     let labels = []
     labels.length = 26;
     labels.fill(null);
     labels = labels.map((el, idx) => idx);
-
-    console.log(data);
-    console.log(data2);
 
     const minVal = d3.min(dataArr, d => d3.min(Object.values(d)));
     console.log(minVal);
@@ -54,7 +50,7 @@ const ChartD3 = () => {
         const xAxis = d3.axisBottom(xScale);
 
         const yScale = d3.scaleLinear()
-            .domain([d3.min(data), d3.max(data)])
+            .domain([minVal, maxVal])
             .range([HEIGHT - PADDING, 0]);
         const yAxis = d3.axisLeft(yScale);
 
@@ -64,9 +60,9 @@ const ChartD3 = () => {
             .attr("height", HEIGHT)
             .attr("width", WIDTH);
 
-        //bars
+        /*//bars
         svg.selectAll("rect")
-            .data(data)
+            .data(dataArr)
             .enter()
             .append("rect")
             .attr("x", (d, i) => xScale(labels[i]))
@@ -75,7 +71,19 @@ const ChartD3 = () => {
             .attr("width", xScale.bandwidth())
             .attr("class", "bar")
             .append("title")
-            .text(d => `PlueValue: ${d} euros`);
+            .text(d => `PlueValue: ${d} euros`);*/
+
+        //prepare g elements, one per year
+        svg.selectAll("g")
+            .data(dataArr)
+            .enter()
+            .append("g")
+            .attr("x", (d, i) => xScale(labels[i]))
+            .attr("y", (d) => yScale(d3.max(Object.values(d))))
+            .attr("height", (d, i) => (HEIGHT - PADDING) - yScale(d3.max(Object.values(d))))
+            .data(dataArr, d => d[1])
+            .enter()
+            .join("rect");
 
         // label for bottom axis
         svg.append("text")
@@ -86,12 +94,12 @@ const ChartD3 = () => {
 
         //bottom axis
         svg.append("g")
-            .attr("transform", `translate(0, ${HEIGHT - PADDING})`)
+            .attr("transform", `translate(0, ${HEIGHT-(PADDING*3)})`)
             .call(xAxis);
 
         //vertical axis
         svg.append("g")
-            .attr("transform", `translate(${PADDING + 5},0)`)
+            .attr("transform", `translate(${PADDING}, 9)`)
             .call(yAxis);
 
     })
